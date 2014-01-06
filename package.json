@@ -1,6 +1,6 @@
 {
   "name": "xconf",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Merge configuration files and return all configurations.",
   "main": "app.js",
   "scripts": {
