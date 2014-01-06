@@ -71,7 +71,7 @@ console.log(config.get('here.is.adeep.example'));
 
 // or using arrays
 
-console.log(config.get(['here']['is']['adeep'][example]));
+console.log(config.get(['here']['is']['adeep']['example']));
 ```
 
 To set a config value you use `.set` instead of `.get`:
@@ -83,7 +83,7 @@ config.set('here.is.adeep.example', false);
 If the key isn't found it will be automatically created. Be aware that the `.set`
 method won't write anything to your disk.
 
-### Loading entyre directories
+### Loading entire directories
 
 You can load directories by using `.dir`, just like this:
 
