@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/xconf.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/XConf.html">XConf</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: lib/xconf.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+var merge = require(&#x27;deepmerge&#x27;);
+var dotty = require(&#x27;dotty&#x27;);
+var fs = require(&#x27;fs&#x27;);
+var path = require(&#x27;path&#x27;);
+
+/**
+ * Main XConf class
+ *
+ * @class XConf
+ * @constructor
+ * @chainable
+ */
+var XConf = function(){
+
+    if(!(this instanceof XConf))
+        return new XConf();
+
+    /**
+     * This object holds all the configs from each instance
+     *
+     * @property __conf
+     * @private
+     * @type Object
+     */
+     this.__conf = {};
+};
+
+/**
+ * Gets the value of a configuration
+ *
+ * @method Get
+ * @public
+ * @param {String | Array} name The key to get
+ * @return {Mixed} The value of the key or undefined if not found
+ */
+XConf.prototype.get = function(name){
+    if(name === undefined)
+        return this.__conf;
+
+    return dotty.get(this.__conf, name);
+};
+
+/**
+ * Sets the value of a configuration
+ *
+ * @method Set
+ * @public
+ * @chainable
+ * @param {String | Array} name The key to set
+ * @param {Mixed} value The value of the key to set
+ * @return {Object} This class as a chain
+ */
+XConf.prototype.set = function(name, value){
+    dotty.put(this.__conf, name, value);
+
+    return this;
+};
+
+/**
+ * Parses a JSON file and merge it into the main config object
+ *
+ * @method File
+ * @public
+ * @chainable
+ * @param {String} file The path to the file
+ * @return {Object} This class as a chain
+ */
+XConf.prototype.file = function(file){
+    var json = require(file);
+    var save = merge(this.__conf, json);
+    this.__conf = save;
+
+    return this;
+};
+
+/**
+ * Parses all JSON files inside a directory
+ *
+ * @method Dir
+ * @public
+ * @chainable
+ * @param {String} dir The path to the directory
+ * @return {Object} This class as a chain
+ */
+XConf.prototype.dir = function(dir){
+    var self = this;
+    var files = fs.readdirSync(dir);
+    files.forEach(function(file){
+        if(file.substring(file.length - 5).toLowerCase() === &#x27;.json&#x27;)
+            self.file(path.join(dir, file));
+    });
+
+    return this;
+};
+
+module.exports = XConf;
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

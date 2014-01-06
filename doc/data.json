@@ -1,0 +1,137 @@
+{
+    "project": {},
+    "files": {
+        "lib/xconf.js": {
+            "name": "lib/xconf.js",
+            "modules": {},
+            "classes": {
+                "XConf": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "XConf": {
+            "name": "XConf",
+            "shortname": "XConf",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/xconf.js",
+            "line": 6,
+            "description": "Main XConf class",
+            "is_constructor": 1,
+            "chainable": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/xconf.js",
+            "line": 18,
+            "description": "This object holds all the configs from each instance",
+            "itemtype": "property",
+            "name": "__conf",
+            "access": "private",
+            "tagname": "",
+            "type": "Object",
+            "class": "XConf"
+        },
+        {
+            "file": "lib/xconf.js",
+            "line": 28,
+            "description": "Gets the value of a configuration",
+            "itemtype": "method",
+            "name": "Get",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The key to get",
+                    "type": "String | Array"
+                }
+            ],
+            "return": {
+                "description": "The value of the key or undefined if not found",
+                "type": "Mixed"
+            },
+            "class": "XConf"
+        },
+        {
+            "file": "lib/xconf.js",
+            "line": 43,
+            "description": "Sets the value of a configuration",
+            "itemtype": "method",
+            "name": "Set",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The key to set",
+                    "type": "String | Array"
+                },
+                {
+                    "name": "value",
+                    "description": "The value of the key to set",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "This class as a chain",
+                "type": "Object"
+            },
+            "class": "XConf"
+        },
+        {
+            "file": "lib/xconf.js",
+            "line": 59,
+            "description": "Parses a JSON file and merge it into the main config object",
+            "itemtype": "method",
+            "name": "File",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "file",
+                    "description": "The path to the file",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "This class as a chain",
+                "type": "Object"
+            },
+            "class": "XConf"
+        },
+        {
+            "file": "lib/xconf.js",
+            "line": 76,
+            "description": "Parses all JSON files inside a directory",
+            "itemtype": "method",
+            "name": "Dir",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "dir",
+                    "description": "The path to the directory",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "This class as a chain",
+                "type": "Object"
+            },
+            "class": "XConf"
+        }
+    ],
+    "warnings": []
+}
