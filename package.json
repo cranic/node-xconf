@@ -2,7 +2,7 @@
   "name": "xconf",
   "version": "0.0.2",
   "description": "Merge configuration files and return all configurations.",
-  "main": "app.js",
+  "main": "./lib/xconf.js",
   "scripts": {
     "test": "make test"
   },
